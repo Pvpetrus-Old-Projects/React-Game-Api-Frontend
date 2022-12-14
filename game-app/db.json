@@ -1,20 +1,15 @@
 {
     "users": [
         {"id":1, "login":"adam", "password": "adam"},
-        {"id":1, "login":"bartek", "password": "bartek"}
+        {"id":2, "login":"bartek", "password": "bartek"}
     ],
     "games":[
-        {"id":1,
-        "title":"Tibia",
-        "thumbnail":"https:\/\/www.freetogame.com\/g\/339\/thumbnail.jpg",
-        "short_description":"A old-school free-to-play massively multiplayer online \r\nrole-playing game.",
-        "game_url":"https:\/\/www.freetogame.com\/open\/tibia",
-        "genre":"MMORPG","platform":"PC (Windows)",
-        "publisher":"CipSoft",
-        "developer":"CipSoft",
-        "release_date":"1997-01-07",
-        "freetogame_profile_url":"https:\/\/www.freetogame.com\/tibia",
-        "user":1}
+        {"id":451,
+        "user":1},
+        {"id":452,
+        "user":1},
+        {"id":450,
+        "user":2}
     ]
     
   }
