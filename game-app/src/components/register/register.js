@@ -1,31 +1,87 @@
 import PropTypes from 'prop-types';
 import styles from './register.module.css';
-import React, {useState } from "react";
+import React, {useEffect, useState } from "react";
 
 function Register(props){
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [users, setUsers] = useState(null);
+  const [error,setError] = useState("");
+  useEffect(()=>{
+    fetch("http://localhost:8000/users")
+    .then(res=>{return res.json()})
+    .then((data)=>{
+      setUsers(data);
+      console.log(data);
+    })
+  }, []);
 
   const submitForm = () => {
     const newUser = { username: username, password: password};
     if(username==="")
     {
+      setError("No username provided");
       console.log("Pusty username");
       return;
     }
     if(password==="")
     {
+      setError("No password provided");
       console.log("Pusty hasło");
       return;
     }
-    console.log("Utworzono użytkownika")
-    props.newUser=newUser;
+    for(let i=0;i<users.length;i++){
+      console.log(newUser.username)
+      console.log(users[i].username)
+      if(newUser.username===users[i].username)
+      {
+        setError("A user with such a username already exists.");
+        console.log("Istnieje już taki użytkownik:",users[i]);
+        return;
+      } 
+    }
+    while(newUser==null)
+    {
+      console.log();
+    }
+    if(newUser!=null)
+    {
+      console.log("Dodawanie użytkownika do bazy: ", newUser);
+      let users=null;
+      fetch("http://localhost:8000/users")
+      .then(res=>{return res.json()})
+      .then((data)=>{
+        users=data;
+        console.log("Dane z serwera: ",data);
+        let id=-1;
+        for(let i=0;i<users.length;i++)
+        {
+          if(id<users[i].id)
+          {
+            id=users[i].id;
+          }
+        }
+        let newUserWithId={"id":id+1,"username":newUser.username,"password":newUser.password}
+        users.push(newUserWithId);
+        fetch("http://localhost:8000/users",{
+          method: "POST",
+          headers: {"Content-type":"application/json"},
+          body: JSON.stringify(newUserWithId)
+        })
+        .then(()=>{
+          console.log("Dodano użytkownika do bazy");
+          props.changePage("Login");
+          props.addedNewUser();
+        });
+      })
+      
+    }
   };
 
   return(
     <div className={styles.Register}>
-    <p>Register Component</p>
-    <form action="" onSubmit={submitForm}>
+    <p className={styles.Title}>Register</p>
+    <div className={styles.Form}>
         <div>
           <p htmlFor="username">username</p>
           <input
@@ -35,6 +91,7 @@ function Register(props){
             autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className={styles.Button}
           />
         </div>
 
@@ -47,15 +104,18 @@ function Register(props){
             autoComplete="off"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className={styles.Button}
           />
         </div>
-        <button className={styles.button} type="submit">
+        {users && <button className={styles.Button} onClick={submitForm}>
           Sign Up
-        </button>
-      </form>
-    <button onClick={ () => props.changePage("Login")}>
+        </button>}
+        <p className="hiddenError">{error}</p>
+        <br></br>
+        <button onClick={ () => props.changePage("Login")}>
       Go to the login page
-    </button>
+      </button>
+      </div>
   </div>
   )
 };

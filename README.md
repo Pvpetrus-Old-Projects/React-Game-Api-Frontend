@@ -6,7 +6,7 @@
 # instalacja serwera json-server
 - npm install -g json-server
 # włączenie serwera json-server
-- json-server --watch db.json
+- json-server --watch db.json --port 8000
 # generowanie komponentu
 npx generate-react-cli component MyComponent 
 # komponenty:
