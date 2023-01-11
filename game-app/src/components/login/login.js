@@ -18,7 +18,8 @@ function Login(props){
   }, []);
 
   const submitForm = () => {
-    const newUser = { username: username, password: password};
+
+    const newUser = { id: 0, username: username, password: password};
     if(username==="")
     {
       setError("No username provided");
@@ -37,6 +38,7 @@ function Login(props){
       if(newUser.username===users[i].username && newUser.password===users[i].password)
       {
         console.log("Istnieje taki użytkownik:",users[i]);
+        newUser.id=users[i].id
         props.loginUser(newUser);
         console.log("Zalogowano");
         props.changePage("Games");

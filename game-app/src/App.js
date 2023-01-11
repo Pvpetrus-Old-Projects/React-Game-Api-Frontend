@@ -18,10 +18,7 @@ class App extends Component{
   render(){
     if(this.state.whichPage==="Login")
     {
-      return( 
-      <div>
-      <Login addedNewUser={this.state.addedNewUser} loginUser={this.loginUser} changePage={this.changePage}></Login>
-      </div>);
+      return <Login addedNewUser={this.state.addedNewUser} loginUser={this.loginUser} changePage={this.changePage}></Login>;
     }
     if(this.state.whichPage==="Register")
     {
@@ -29,21 +26,23 @@ class App extends Component{
     }
     if(this.state.whichPage==="Games")
     {
-      return <Games currentUser={this.currentUser} changePage={this.changePage} ></Games>;
+      return <Games currentUser={this.state.currentUser} changePage={this.changePage} setGameIdForDetailsId={this.setGameIdForDetailsId}></Games>;
     }
     if(this.state.whichPage==="GameDetails")
     {
-      return <GameDetails whichPage={this.state.whichPage}></GameDetails>;
+      return <GameDetails currentUser={this.state.currentUser} changePage={this.changePage} gameForDetailsId={this.state.gameForDetailsId}></GameDetails>;
     }
     if(this.state.whichPage==="Favourites")
     {
-      return <Favourites whichPage={this.state.whichPage}></Favourites>;
+      return <Favourites currentUser={this.state.currentUser} changePage={this.changePage} setGameIdForDetailsId={this.setGameIdForDetailsId}></Favourites>;
     }
   }
   changePage = (page)=>{
     this.setState({whichPage:page})
   }
-
+  setGameIdForDetailsId = (gameId)=>{
+    this.setState({gameForDetailsId:gameId})
+  }
   addedNewUser = ()=>{
     this.setState({addedNewUser:true})
   }

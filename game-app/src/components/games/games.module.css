@@ -1,4 +1,10 @@
 .Games {width:100%;}
+.ListOfGames {margin-top:76px;
+    background-color: #333;
+   color: #ffffff;
+   font-weight: bold;
+   font-size: 20px;
+    width:100%;}
 .Title {background-color: #333;
     border-color: #340744;
     color:#f2f2f2;
@@ -29,3 +35,37 @@
     text-align: center;
 margin-top:16px;
 margin-bottom: 16px;}
+
+.ListOfGamesOne {
+    background-color: #333;
+    border-color: #340744;
+    color:#f2f2f2;
+    display: inline-block;
+    text-align:center;
+    width:25%;
+    margin-left:0%;
+}
+.ListOfGamesTwo {
+    background-color: #333;
+    border-color: #340744;
+    color:#f2f2f2;
+    display: inline-block;
+    text-align:center;
+    width:25%;
+}
+.ListOfGamesThree {
+    background-color: #333;
+    border-color: #340744;
+    color:#f2f2f2;
+    display: inline-block;
+    text-align:center;
+    width:25%;
+}
+.ListOfGamesFour {
+    background-color: #333;
+    border-color: #340744;
+    color:#f2f2f2;
+    display: inline-block;
+    text-align:center;
+    width:25%;
+}

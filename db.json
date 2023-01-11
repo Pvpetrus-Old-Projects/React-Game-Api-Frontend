@@ -23,16 +23,29 @@
   ],
   "games": [
     {
-      "id": 451,
-      "userId": 1
+      "id": 540,
+      "userId": 3,
+      "title": "Overwatch 2"
     },
     {
-      "id": 452,
-      "userId": 1
+      "id": 192,
+      "userId": 3,
+      "title": "WAKFU"
     },
     {
-      "id": 450,
-      "userId": 2
+      "id": 304,
+      "userId": 3,
+      "title": "Cabal Online"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "title": "World of Tanks"
+    },
+    {
+      "id": 1,
+      "userId": 3,
+      "title": "Dauntless"
     }
   ]
 }
